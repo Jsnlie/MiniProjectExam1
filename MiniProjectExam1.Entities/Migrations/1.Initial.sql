@@ -1,0 +1,27 @@
+﻿CREATE DATABASE MiniProjectExam1
+
+USE MiniProjectExam1
+
+CREATE TABLE Tickets(
+	CodeTicket VARCHAR(50) PRIMARY KEY NOT NULL,
+	NameTicket VARCHAR(255) NOT NULL,
+	CategoryTicket VARCHAR(100) NOT NULL,
+	EventDate DATETIME2 NOT NULL,
+	Price INT NOT NULL,
+	Quota INT NOT NULL,
+	RemainingQuota INT NOT NULL
+);
+
+CREATE TABLE BookedTickets (
+    BookedTicketId   UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    BookingDate   DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
+);
+
+CREATE TABLE BookedTicketDetails (
+    Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    BookedTicketId UNIQUEIDENTIFIER NOT NULL,
+    CodeTicket VARCHAR(50) NOT NULL,
+    Quantity INT NOT NULL,
+    FOREIGN KEY (BookedTicketId) REFERENCES BookedTickets(BookedTicketId),
+    FOREIGN KEY (CodeTicket)      REFERENCES Tickets(CodeTicket)
+);
