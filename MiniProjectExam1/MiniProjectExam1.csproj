@@ -17,10 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\MiniProjectExam1.Entities\MiniProjectExam1.Entities.csproj" />
   </ItemGroup>
 

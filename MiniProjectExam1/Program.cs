@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MiniProjectExam1.Entities;
+using MiniProjectExam1.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -19,6 +20,8 @@ builder.Services.AddDbContextPool<MiniProjectExam1Context>(options =>
     var conString = configuration.GetConnectionString("SqlServerDB");
     options.UseSqlServer(conString);
 });
+
+builder.Services.AddTransient<TicketService>();
 
 var app = builder.Build();
 
